@@ -22,7 +22,7 @@ object WordCountJob {
     
     // See http://spark-project.org/docs/latest/api/core/index.html#spark.SparkContext
     val sc = new SparkContext(
-      master = args(0),
+      master = System.getenv("MASTER"), // Set by Amazon's install-spark-shark.sh
       appName = "WordCountJob",
       sparkHome = System.getenv("SPARK_HOME"),
       jars = Seq(System.getenv("SPARK_EXAMPLE_JAR"))
