@@ -18,6 +18,8 @@ Section to come.
 
 ## Running on Amazon EMR
 
+_Much of this section has been adapted from the Amazon tutorial [Run Spark and Shark on Amazon Elastic MapReduce] [aws-spark-tutorial]._
+
 ### Prepare
 
 First, upload the jar to S3 - if you haven't yet built the project (see above), you can grab the latest copy of the jar from this repo's [Downloads] [downloads].
@@ -76,6 +78,8 @@ limitations under the License.
 
 [scalding-example-project]: https://github.com/snowplow/scalding-example-project
 [cascalog-example-project]: https://github.com/snowplow/cascalog-example-project
+
+[aws-spark-tutorial]: http://aws.amazon.com/articles/4926593393724923
 
 [elasticity]: https://github.com/rslifka/elasticity
 [license]: http://www.apache.org/licenses/LICENSE-2.0
