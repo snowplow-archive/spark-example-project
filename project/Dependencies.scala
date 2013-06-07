@@ -14,7 +14,9 @@ import sbt._
 
 object Dependencies {
   val resolutionRepos = Seq(
-    ScalaToolsSnapshots
+    ScalaToolsSnapshots,
+    "Akka Repository" at "http://repo.akka.io/releases/",
+    "Spray Repository" at "http://repo.spray.cc/"
   )
 
   object V {
@@ -30,6 +32,6 @@ object Dependencies {
     // Add additional libraries from mvnrepository.com (SBT syntax) here...
 
     // Scala (test only)
-    val specs2       = "org.specs2"                 %% "specs2"                % V.specs2       % "test"
+    val specs2       = "org.specs2"                 % "specs2_2.9.2"           % V.specs2       % "test"
   }
 }
