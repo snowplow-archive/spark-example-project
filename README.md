@@ -62,7 +62,7 @@ Nothing planned currently.
 
 ## Copyright and license
 
-Copyright 2013 Snowplow Analytics Ltd, with significant portions copyright 2012 Twitter, Inc.
+Copyright 2013 Snowplow Analytics Ltd.
 
 Licensed under the [Apache License, Version 2.0] [license] (the "License");
 you may not use this software except in compliance with the License.
