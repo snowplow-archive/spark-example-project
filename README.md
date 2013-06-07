@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a simple word count job written in Scala for the [Spark] [spark] cluster computing platform, with instructions for running on [Amazon Elastic MapReduce] [emr]. The algorithm is ported directly from Twitter's [`WordCountJob`] [wordcount]) for Scalding.
+This is a simple word count job written in Scala for the [Spark] [spark] cluster computing platform, with instructions for running on [Amazon Elastic MapReduce] [emr]. The algorithm is ported directly from Twitter's [`WordCountJob`] [wordcount] for Scalding.
 
 This was built by the Professional Services team at [Snowplow Analytics] [snowplow], who use Spark on their [Data pipelines and algorithms] [data-pipelines-algos] projects.
 
