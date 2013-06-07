@@ -60,13 +60,16 @@ Replace `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropri
 
 Once the output has completed, you should see a folder structure like this in your output bucket:
 
-    Listing to come
+     results
+     |
+     +- _SUCCESS
+     +- part-00000
 
-Download the <<SECTION TO COME>> and check that <<TO COME>> contains:
+Download the `part-00000` file and check that it contains:
 
-	goodbye	1
-	hello	1
-	world	2
+    (goodbye,1)
+    (hello,1)
+    (world,2)
 
 ## Running on your own Hadoop cluster
 
