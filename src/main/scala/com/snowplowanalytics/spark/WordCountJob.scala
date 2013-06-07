@@ -30,7 +30,7 @@ object WordCountJob {
     
     // Adapted from Word Count example on http://spark-project.org/examples/
     val file = sc.textFile(args(1))
-	  val words = file.flatMap(line => tokenize(line))
+    val words = file.flatMap(line => tokenize(line))
     val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
     wordCounts.saveAsTextFile(args(2))
 
