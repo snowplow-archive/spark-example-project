@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is XXX for [Spark] [spark].
+This is a simple word count job written in Scala for the [Spark] [spark] cluster computing platform, with instructions for running on [Amazon Elastic MapReduce] [emr]. The algorithm is ported directly from Twitter's [`WordCountJob`] [wordcount]) for Scalding.
 
 This was built by the Professional Services team at [Snowplow Analytics] [snowplow], who use Spark on their [Data pipelines and algorithms] [data-pipelines-algos] projects.
 
@@ -74,6 +74,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 [spark]: http://spark-project.org/
+[wordcount]: https://github.com/twitter/scalding/blob/master/README.md
 [snowplow]: http://snowplowanalytics.com
 [data-pipelines-algos]: http://snowplowanalytics.com/services/pipelines.html
 
@@ -81,6 +82,11 @@ limitations under the License.
 [cascalog-example-project]: https://github.com/snowplow/cascalog-example-project
 
 [aws-spark-tutorial]: http://aws.amazon.com/articles/4926593393724923
+
+[emr]: http://aws.amazon.com/elasticmapreduce/
+[downloads]: https://github.com/snowplow/spark-example-project/downloads
+[hello-txt]: https://github.com/snowplow/spark-example-project/raw/master/data/hello.txt
+[emr-client]: http://aws.amazon.com/developertools/2264
 
 [elasticity]: https://github.com/rslifka/elasticity
 [license]: http://www.apache.org/licenses/LICENSE-2.0
