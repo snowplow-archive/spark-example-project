@@ -12,11 +12,25 @@ This was built by the Professional Services team at [Snowplow Analytics] [snowpl
 
 ## Building
 
-Section to come.
+Assuming you already have [SBT] [sbt] installed:
+
+    $ git clone git://github.com/snowplow/spark-example-project.git
+    $ cd spark-example-project
+    $ sbt assembly
+
+The 'fat jar' is now available as:
+
+    target/spark-example-project-0.0.1.jar
 
 ## Unit testing
 
-Section to come.
+The `assembly` command above runs the test suite - but you can also run this manually with:
+
+    $ sbt test
+    <snip>
+    [info] + A WordCount job should
+    [info]   + count words correctly
+    [info] Passed: : Total 1, Failed 0, Errors 0, Passed 1, Skipped 0
 
 ## Running on Amazon EMR
 
@@ -90,6 +104,8 @@ limitations under the License.
 [cascalog-example-project]: https://github.com/snowplow/cascalog-example-project
 
 [aws-spark-tutorial]: http://aws.amazon.com/articles/4926593393724923
+
+[sbt]: http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html
 
 [emr]: http://aws.amazon.com/elasticmapreduce/
 [downloads]: https://github.com/snowplow/spark-example-project/downloads
