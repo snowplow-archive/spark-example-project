@@ -14,6 +14,7 @@ package com.snowplowanalytics.spark
 
 // Spark
 import spark._
+import SparkContext._
 
 object WordCountJob {
   
@@ -29,10 +30,9 @@ object WordCountJob {
     
     // Adapted from Word Count example on http://spark-project.org/examples/
     val file = sc.textFile(args(1))
-	  val counts = file.flatMap(line => tokenize(line))
-                  .map(word => (word, 1))
-                  .reduceByKey(_ + _)
-    counts.saveAsTextFile(args(2))
+	  val words = file.flatMap(line => tokenize(line))
+    val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
+    wordCounts.saveAsTextFile(args(2))
 
     // Exit with success
     System.exit(0)

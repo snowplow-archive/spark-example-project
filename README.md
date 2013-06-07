@@ -1,5 +1,7 @@
 # Spark Example Project
 
+**UNFINISHED**
+
 ## Introduction
 
 This is a simple word count job written in Scala for the [Spark] [spark] cluster computing platform, with instructions for running on [Amazon Elastic MapReduce] [emr]  - without requiring Spark's `run` script. The algorithm is ported directly from Twitter's [`WordCountJob`] [wordcount] for Scalding.
@@ -30,7 +32,13 @@ Next, upload the data file [`data/hello.txt`] [hello-txt] to S3.
 
 Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-client]:
 
-    $ Command to come
+    $ elastic-mapreduce --create --name "spark-example-project" \
+      --jar s3n://{{JAR_BUCKET}}/spark-example-project-0.0.1.jar \
+      --bootstrap-action s3://elasticmapreduce/samples/spark/0.7/install-spark-shark.sh
+      --bootstrap-name "Mesos/Spark/Shark"
+      --arg com.snowplowanalytics.spark.WordCountJob \
+      --arg s3n://{{IN_BUCKET}}/hello.txt \
+      --arg s3n://{{OUT_BUCKET}}/results
 
 Replace `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths.
 

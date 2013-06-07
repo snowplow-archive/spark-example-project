@@ -33,27 +33,28 @@ object BuildSettings {
     // Slightly cleaner jar name
     jarName in assembly <<= (name, version) { (name, version) => name + "-" + version + ".jar" },
     
-    // TODO: can we delete all these?
-
     // Drop these jars
     excludedJars in assembly <<= (fullClasspath in assembly) map { cp =>
       val excludes = Set(
         "jsp-api-2.1-6.1.14.jar",
         "jsp-2.1-6.1.14.jar",
         "jasper-compiler-5.5.12.jar",
-        "minlog-1.2.jar", // Otherwise causes conflicts with Kyro (which bundles it)
-        "janino-2.5.16.jar", // Janino includes a broken signature, and is not needed anyway
-        "commons-beanutils-core-1.8.0.jar", // Clash with each other and with commons-collections
-        "commons-beanutils-1.7.0.jar",      // "
-        "hadoop-core-0.20.2.jar", // Provided by Amazon EMR. Delete this line if you're not on EMR
-        "hadoop-tools-0.20.2.jar" // "
+        "commons-beanutils-core-1.8.0.jar",
+        "commons-beanutils-1.7.0.jar",
+        "servlet-api-2.5-6.1.14.jar",
+        "servlet-api-2.5-20081211.jar",
+        "servlet-api-2.5.jar",
+        "hadoop-core-1.0.4.jar", // Provided by Amazon EMR. Delete this line if you're not on EMR
+        "hadoop-tools-1.0.4.jar" // "
       ) 
       cp filter { jar => excludes(jar.data.getName) }
     },
     
     mergeStrategy in assembly <<= (mergeStrategy in assembly) {
       (old) => {
-        case "project.clj" => MergeStrategy.discard // Leiningen build files
+        // case "project.clj" => MergeStrategy.discard // Leiningen build files
+        case x if x.startsWith("META-INF") => MergeStrategy.discard // Bumf
+        case x if x.endsWith(".html") => MergeStrategy.discard // More bumf
         case x => old(x)
       }
     }
