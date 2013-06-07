@@ -12,35 +12,19 @@
  */
 package com.snowplowanalytics.spark
 
-// Spark
-import spark._
-import SparkContext._
-
 object WordCountJob {
   
   def main(args: Array[String]) {
-    
-    // See http://spark-project.org/docs/latest/api/core/index.html#spark.SparkContext
-    val sc = new SparkContext(
-      master = System.getenv("MASTER"), // Set by Amazon's install-spark-shark.sh
-      appName = "WordCountJob",
-      sparkHome = System.getenv("SPARK_HOME"),
-      jars = Seq(System.getenv("SPARK_EXAMPLE_JAR"))
+        
+    // Run the word count
+    WordCount.execute(
+      master    = sys.env("MASTER"), // Set by Amazon's install-spark-shark.sh
+      args      = args,
+      sparkHome = Option(sys.env("SPARK_HOME")),
+      jars      = Option(sys.env("SPARK_EXAMPLE_JAR")).map(j => Seq(j)) // TODO: what will set this?
     )
-    
-    // Adapted from Word Count example on http://spark-project.org/examples/
-    val file = sc.textFile(args(1))
-    val words = file.flatMap(line => tokenize(line))
-    val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
-    wordCounts.saveAsTextFile(args(2))
 
     // Exit with success
     System.exit(0)
-  }
-
-  // Split a piece of text into individual words.
-  def tokenize(text : String) : Array[String] = {
-    // Lowercase each word and remove punctuation.
-    text.toLowerCase.replaceAll("[^a-zA-Z0-9\\s]", "").split("\\s+")
   }
 }

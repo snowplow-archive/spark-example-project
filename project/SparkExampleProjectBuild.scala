@@ -29,7 +29,7 @@ object SparkExampleProjectBuild extends Build {
     .settings(
       libraryDependencies ++= Seq(
         Libraries.sparkCore,
-        Libraries.hadoopCore,
+        Libraries.guava,
         Libraries.specs2
         // Add your additional libraries here (comma-separated)...
       )
