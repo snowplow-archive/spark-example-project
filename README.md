@@ -1,6 +1,6 @@
 # Spark Example Project [![Build Status](https://travis-ci.org/snowplow/spark-example-project.png)](https://travis-ci.org/snowplow/spark-example-project)
 
-**UNFINISHED**
+**UNFINISHED **
 
 ## Introduction
 
