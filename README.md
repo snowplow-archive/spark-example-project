@@ -38,7 +38,7 @@ _Much of this section has been adapted from the Amazon tutorial [Run Spark and S
 
 ### Prepare
 
-First, upload the jar to S3 - if you haven't yet built the project (see above), you can grab the latest copy of the jar from this repo's [Downloads] [downloads].
+Assuming you have already assembled the jarfile (see above), now upload the jar to Amazon S3.
 
 Next, upload the data file [`data/hello.txt`] [hello-txt] to S3.
 
@@ -111,7 +111,6 @@ limitations under the License.
 [sbt]: http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html
 
 [emr]: http://aws.amazon.com/elasticmapreduce/
-[downloads]: https://github.com/snowplow/spark-example-project/downloads
 [hello-txt]: https://github.com/snowplow/spark-example-project/raw/master/data/hello.txt
 [emr-client]: http://aws.amazon.com/developertools/2264
 
