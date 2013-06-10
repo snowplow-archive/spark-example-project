@@ -1,6 +1,6 @@
 # Spark Example Project [![Build Status](https://travis-ci.org/snowplow/spark-example-project.png)](https://travis-ci.org/snowplow/spark-example-project)
 
-**UNFINISHED **
+**UNFINISHED**
 
 ## Introduction
 
@@ -71,9 +71,9 @@ Download the `part-00000` file and check that it contains:
     (hello,1)
     (world,2)
 
-## Running on your own Hadoop cluster
+## Running on your own Spark cluster
 
-If you have successfully run this on your own Hadoop cluster, we would welcome a pull-request updating the instructions in this section.
+If you have successfully run this on your own Spark cluster, we would welcome a pull-request updating the instructions in this section.
 
 ## Next steps
 
