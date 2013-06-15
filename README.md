@@ -47,7 +47,7 @@ Next, upload the data file [`data/hello.txt`] [hello-txt] to S3.
 Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-client]:
 
     $ elastic-mapreduce --create --name "spark-example-project" \
-      --bootstrap-action s3://snowplow-hosted-assets/common/spark/install-spark-run-job-0.1.6.sh \
+      --bootstrap-action s3://snowplow-hosted-assets/common/spark/install-spark-run-job-0.1.8.sh \
       --bootstrap-name "Spark Example Project" \
       --args "http://s3.amazonaws.com/{{JAR_BUCKET}}/spark-example-project-0.0.1.jar,s3n://{{IN_BUCKET}}/hello.txt,s3n://{{OUT_BUCKET}}/results"
 
@@ -80,7 +80,7 @@ Use the excellent [Elasticity] [elasticity] Ruby library to invoke/schedule your
 
 ## Roadmap
 
-Nothing planned currently.
+* Update `install-spark-run-job.sh` to support private jarfiles (i.e. not only public files on S3)
 
 ## Further reading
 

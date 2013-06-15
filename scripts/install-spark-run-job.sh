@@ -11,7 +11,7 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.6
+# Version:     0.1.7
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
@@ -48,7 +48,7 @@ EOL
 
 # Install config file and jars
 cp $HADOOP_HOME/conf/core-site.xml $SPARK_HOME/conf/
-cp $HADOOP_HOME/hadoop-core.jar $SPARK_HOME/lib_managed/jars/hadoop-core-1.0.3.jar 
+cp $HADOOP_HOME/hadoop-core-1.0.3.jar $SPARK_HOME/lib_managed/jars/ 
 cp $HADOOP_HOME/lib/gson-* $SPARK_HOME/lib_managed/jars/
 cp $HADOOP_HOME/lib/aws-java-sdk-* $SPARK_HOME/lib_managed/jars/
 cp $HADOOP_HOME/lib/emr-metrics* $SPARK_HOME/lib_managed/jars/
