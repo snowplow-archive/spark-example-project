@@ -39,7 +39,7 @@ class WordCountTest extends Specification {
 
       WordCount.execute(
         master = "local",
-        args   = Array(inputFile, outputDir)
+        args   = List(inputFile, outputDir)
       )
 
       val outputFile = new File(outputDir, "part-00000")

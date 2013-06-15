@@ -28,12 +28,8 @@ object WordCountJob {
     System.exit(0)
   }
 
-  def allButFirst(args: Array[String]) = {
+  def allButFirst(args: Array[String]): List[String] = {
     val len = args.length - 1
-    if (len >= 1) {
-      args.takeRight(len)
-    } else {
-      null // Yech, really should switch this to an empty Scala List
-    }
+    if (len >= 1) args.takeRight(len).toList else Nil
   }
 }
