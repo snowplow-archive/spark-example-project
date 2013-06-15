@@ -11,7 +11,7 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.1
+# Version:     0.1.2
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
@@ -45,7 +45,7 @@ export SPARK_HOME=$SPARK_HOME
 export MASTER=$MASTER
 export SPARK_LIBRARY_PATH=/home/hadoop/native/Linux-amd64-64
 export SPARK_JAVA_OPTS=\"-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Dspark.local.dir=$SPACE\"
-EOL 
+EOL
 
 # Install config file and jars
 cp /home/hadoop/conf/core-site.xml /home/hadoop/spark/conf/
@@ -62,7 +62,7 @@ then
         /home/hadoop/spark/bin/start-master.sh
         
         # Run our job (if we have one)
-        if [ ${#} -ge 1 ];then
+        if [ ${#} -ge 1 ]; then
                 jar_uri=${1}
                 cd $SPARK_JOBS
                 wget $jar_uri
@@ -72,11 +72,11 @@ then
 
 else
         nc -z $MASTER_HOST $MASTER_PORT
-        while [ $? -eq 1 ];                do
-                        echo "Can't connect to the master, sleeping for 20 seconds"
-                        sleep 20
-                        nc -z  $MASTER_HOST $MASTER_PORT
-                done
+        while [ $? -eq 1 ]; do
+                echo "Can't connect to the master, sleeping for 20 seconds"
+                sleep 20
+                nc -z  $MASTER_HOST $MASTER_PORT
+        done
         echo "Connecting to the master was successful"
         /home/hadoop/spark/bin/spark-daemon.sh start spark.deploy.worker.Worker $MASTER
 fi
