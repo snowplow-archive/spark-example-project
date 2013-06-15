@@ -11,7 +11,7 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.3
+# Version:     0.1.4
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
@@ -43,7 +43,7 @@ export SCALA_HOME=$SCALA_HOME
 export SPARK_HOME=$SPARK_HOME
 export MASTER=$MASTER
 export SPARK_LIBRARY_PATH=/home/hadoop/native/Linux-amd64-64
-export SPARK_JAVA_OPTS=\"-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Dspark.local.dir=$SPACE\"
+export SPARK_JAVA_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Dspark.local.dir=$SPACE"
 EOL
 
 # Install config file and jars
@@ -64,6 +64,7 @@ then
         if [ $# -ge 1 ]; then
                 jar_uri=$1
                 jobs=$SPARK_HOME/jobs
+                mkdir $jobs
                 cd $jobs
                 wget $jar_uri
                 job_path=$jobs/$(basename $jar_uri)
