@@ -5,10 +5,11 @@ cd /home/hadoop/
 wget http://www.spark-project.org/download-spark-0.7.2-prebuilt-hadoop1
 wget http://www.scala-lang.org/downloads/distrib/files/scala-2.9.3.tgz
 tar -xvzf scala-2.9.2.tgz
-tar -xvzf spark-0.7-bin.tgz
-
-# Configure variables
+tar -xvzf download-spark-0.7.2-prebuilt-hadoop1
 SCALA_HOME=/home/hadoop/scala-2.9.3
+SPARK_HOME=/home/hadoop/spark-0.7.2
+
+# Configure rest of variables
 MASTER_HOST=$(grep -i "job.tracker<" /home/hadoop/conf/mapred-site.xml | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
 MASTER_PORT=7077
 MASTER=spark://$MASTER_HOST:$MASTER_PORT
@@ -18,7 +19,8 @@ JOBS_DIR=/home/hadoop/spark/jobs
 # Build Spark environment
 cat >/home/hadoop/spark/conf/spark-env.sh <<EOL
 export SPARK_MASTER_IP=$MASTER
-export SCALA_HOME=$SCALA_HOME 
+export SCALA_HOME=$SCALA_HOME
+export SPARK_HOME=$SPARK_HOME
 export MASTER=$MASTER
 export SPARK_LIBRARY_PATH=/home/hadoop/native/Linux-amd64-64
 export SPARK_JAVA_OPTS=\"-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Dspark.local.dir=$SPACE\"
