@@ -38,7 +38,7 @@ The `assembly` command above runs the test suite - but you can also run this man
 
 ### Prepare
 
-Assuming you have already assembled the jarfile (see above), now upload the jar to Amazon S3.
+Assuming you have already assembled the jarfile (see above), now upload the jar to an Amazon S3 bucket and make the file publically accessible.
 
 Next, upload the data file [`data/hello.txt`] [hello-txt] to S3.
 
@@ -49,7 +49,7 @@ Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-c
     $ elastic-mapreduce --create --name "spark-example-project" \
       --bootstrap-action s3://snowplow-hosted-assets/common/spark/install-spark-run-job-0.1.0.sh \
       --bootstrap-name "Mesos/Spark/Shark" \
-      --arg s3n://{{JAR_BUCKET}}/spark-example-project-0.0.1.jar \
+      --arg http://s3.amazonaws.com/{{JAR_BUCKET}}/spark-example-project-0.0.1.jar \
       --arg s3n://{{IN_BUCKET}}/hello.txt \
       --arg s3n://{{OUT_BUCKET}}/results
 

@@ -1,6 +1,22 @@
 #!/bin/bash
-
-# Version: 0.1.0
+#
+# Copyright (c) 2013 Snowplow Analytics Ltd. All rights reserved.
+#
+# This program is licensed to you under the Apache License Version 2.0,
+# and you may not use this file except in compliance with the Apache License Version 2.0.
+# You may obtain a copy of the Apache License Version 2.0 at http://www.apache.org/licenses/LICENSE-2.0.
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the Apache License Version 2.0 is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
+#
+# Version:     0.1.0
+# URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
+#
+# Authors:     Alex Dean
+# Copyright:   Copyright (c) 2013 Snowplow Analytics Ltd
+# License:     Apache License Version 2.0
 
 # Download and install Spark & Scala
 cd /home/hadoop/
@@ -44,11 +60,11 @@ then
         
         # Run our job (if we have one)
         if [ ${#} -ge 1 ];then
-                job_uri=${1}
+                jar_uri=${1}
                 cd $JOBS_DIR
-                wget $job_uri
-                job_path=$JOBS_DIR/$(basename $job_uri)
-                java -jar $job_path $job_path ${*:2} # Second job_path passed as first argument
+                wget $jar_uri
+                job_path=$JOBS_DIR/$(basename $jar_uri)
+                java -jar $job_path ${*:2}
         fi
 
 else

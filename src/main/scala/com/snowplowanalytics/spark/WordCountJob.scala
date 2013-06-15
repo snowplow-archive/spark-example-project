@@ -22,16 +22,11 @@ object WordCountJob {
     // Run the word count
     WordCount.execute(
       master    = sys.env("MASTER"),
-      args      = allButFirst(args),
+      args      = args.toList,
       jars      = SparkContext.jarOfObject(this)
     )
 
     // Exit with success
     System.exit(0)
-  }
-
-  def allButFirst(args: Array[String]): List[String] = {
-    val len = args.length - 1
-    if (len >= 1) args.takeRight(len).toList else Nil
   }
 }
