@@ -48,10 +48,7 @@ Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-c
 
     $ TO COME
 
-Replace:
-
-*  `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths
-* `{{ACCESS_KEY_ID}}` and `{{SECRET_ACCESS_KEY}}` with your AWS credentials
+Replace `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths.
 
 ### Inspect
 
