@@ -11,7 +11,7 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.4
+# Version:     0.1.5
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
@@ -62,13 +62,14 @@ then
         
         # Run our job (if we have one)
         if [ $# -ge 1 ]; then
-                jar_uri=$1
+                # Download the job
                 jobs=$SPARK_HOME/jobs
-                mkdir $jobs
-                cd $jobs
-                wget $jar_uri
-                job_path=$jobs/$(basename $jar_uri)
-                java -jar $job_path ${*:2}
+                mkdir $jobs && cd $_
+                wget $1
+                # Load the environment
+                . $spark_env
+                # Run the job
+                java -jar $jobs/$(basename $1) ${*:2}
         fi
 
 else
