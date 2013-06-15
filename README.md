@@ -1,10 +1,10 @@
 # Spark Example Project [![Build Status](https://travis-ci.org/snowplow/spark-example-project.png)](https://travis-ci.org/snowplow/spark-example-project)
 
-**UNFINISHED**
+**Please note: the instructions for running this project on Amazon EMR are currently incomplete.**
 
 ## Introduction
 
-This is a simple word count job written in Scala for the [Spark] [spark] cluster computing platform, with instructions for running on [Amazon Elastic MapReduce] [emr] in non-interactive mode. The algorithm is ported directly from Twitter's [`WordCountJob`] [wordcount] for Scalding.
+This is a simple word count job written in Scala for the [Spark] [spark] cluster computing platform, with instructions for running on [Amazon Elastic MapReduce] [emr] in non-interactive mode. The code is ported directly from Twitter's [`WordCountJob`] [wordcount] for Scalding.
 
 This was built by the Professional Services team at [Snowplow Analytics] [snowplow], who use Spark on their [Data pipelines and algorithms] [data-pipelines-algos] projects.
 
@@ -34,7 +34,7 @@ The `assembly` command above runs the test suite - but you can also run this man
 
 ## Running on Amazon EMR
 
-_Much of this section has been adapted from the Amazon tutorial [Run Spark and Shark on Amazon Elastic MapReduce] [aws-spark-tutorial]._
+**Please note: this section is currently incomplete.**
 
 ### Prepare
 
@@ -46,15 +46,12 @@ Next, upload the data file [`data/hello.txt`] [hello-txt] to S3.
 
 Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-client]:
 
-    $ elastic-mapreduce --create --name "spark-example-project" \
-      --jar s3n://{{JAR_BUCKET}}/spark-example-project-0.0.1.jar \
-      --bootstrap-action s3://elasticmapreduce/samples/spark/0.7/install-spark-shark.sh
-      --bootstrap-name "Mesos/Spark/Shark"
-      --arg com.snowplowanalytics.spark.WordCountJob \
-      --arg s3n://{{IN_BUCKET}}/hello.txt \
-      --arg s3n://{{OUT_BUCKET}}/results
+    $ TO COME
 
-Replace `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths.
+Replace:
+
+*  `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths
+* `{{ACCESS_KEY_ID}}` and `{{SECRET_ACCESS_KEY}}` with your AWS credentials
 
 ### Inspect
 
@@ -85,6 +82,12 @@ Use the excellent [Elasticity] [elasticity] Ruby library to invoke/schedule your
 
 Nothing planned currently.
 
+## Further reading
+
+* [Run Spark and Shark on Amazon Elastic MapReduce] [aws-spark-tutorial]
+* [SparkEMRBootstrap] [spark-emr-bootstrap]
+* [Running Spark job on EMR as a jar in non-interactive mode] [spark-emr-howto]
+
 ## Copyright and license
 
 Copyright 2013 Snowplow Analytics Ltd.
@@ -107,6 +110,8 @@ limitations under the License.
 [cascalog-example-project]: https://github.com/snowplow/cascalog-example-project
 
 [aws-spark-tutorial]: http://aws.amazon.com/articles/4926593393724923
+[spark-emr-bootstrap]: https://github.com/ianoc/SparkEMRBootstrap
+[spark-emr-howto]: https://forums.aws.amazon.com/thread.jspa?messageID=458398
 
 [sbt]: http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html
 
@@ -115,4 +120,6 @@ limitations under the License.
 [emr-client]: http://aws.amazon.com/developertools/2264
 
 [elasticity]: https://github.com/rslifka/elasticity
+
+
 [license]: http://www.apache.org/licenses/LICENSE-2.0
