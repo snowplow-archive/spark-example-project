@@ -12,16 +12,18 @@
  */
 package com.snowplowanalytics.spark
 
+// Spark
+import spark.SparkContext
+
 object WordCountJob {
   
   def main(args: Array[String]) {
-        
+    
     // Run the word count
     WordCount.execute(
       master    = sys.env("MASTER"),
       args      = allButFirst(args),
-      sparkHome = Option(sys.env("SPARK_HOME")),
-      jars      = args.headOption.map(j => Seq(j))
+      jars      = SparkContext.jarOfObject(this)
     )
 
     // Exit with success

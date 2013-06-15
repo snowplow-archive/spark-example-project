@@ -21,13 +21,9 @@ object WordCount {
   private val AppName = "WordCountJob"
 
   // Run the word count. Agnostic to Spark's current mode of operation: can be run from tests as well as from main
-  def execute(master: String, args: List[String], sparkHome: Option[String] = None, jars: Option[Seq[String]] = None) {
+  def execute(master: String, args: List[String], jars: Seq[String] = Nil) {
   
-    val sc = (sparkHome, jars) match {
-      case (Some(sh), Some(j)) => new SparkContext(master, AppName, sh, j)
-      case (Some(sh), None)    => new SparkContext(master, AppName, sh)
-      case (None, None)        => new SparkContext(master, AppName) 
-    }
+    val sc = new SparkContext(master, AppName, null, jars) // null forces SparkContext to look up SPARK_HOME env var
    
     // Adapted from Word Count example on http://spark-project.org/examples/
     val file = sc.textFile(args(0))

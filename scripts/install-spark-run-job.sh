@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Version: 0.1.0
+
 # Download and install Spark & Scala
 cd /home/hadoop/
 wget http://www.spark-project.org/download-spark-0.7.2-prebuilt-hadoop1

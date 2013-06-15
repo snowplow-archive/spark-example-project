@@ -46,7 +46,12 @@ Next, upload the data file [`data/hello.txt`] [hello-txt] to S3.
 
 Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-client]:
 
-    $ TO COME
+    $ elastic-mapreduce --create --name "spark-example-project" \
+      --bootstrap-action s3://snowplow-hosted-assets/common/spark/install-spark-run-job-0.1.0.sh \
+      --bootstrap-name "Mesos/Spark/Shark" \
+      --arg s3n://{{JAR_BUCKET}}/spark-example-project-0.0.1.jar \
+      --arg s3n://{{IN_BUCKET}}/hello.txt \
+      --arg s3n://{{OUT_BUCKET}}/results
 
 Replace `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths.
 
