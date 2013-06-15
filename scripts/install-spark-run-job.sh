@@ -11,31 +11,34 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.0
+# Version:     0.1.1
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
 # Copyright:   Copyright (c) 2013 Snowplow Analytics Ltd
 # License:     Apache License Version 2.0
 
-# Download and install Spark & Scala
-cd /home/hadoop/
-wget http://www.spark-project.org/download-spark-0.7.2-prebuilt-hadoop1
-wget http://www.scala-lang.org/downloads/distrib/files/scala-2.9.3.tgz
-tar -xvzf scala-2.9.2.tgz
-tar -xvzf download-spark-0.7.2-prebuilt-hadoop1
-SCALA_HOME=/home/hadoop/scala-2.9.3
-SPARK_HOME=/home/hadoop/spark-0.7.2
-
-# Configure rest of variables
+# Configure variables
+HADOOP_HOME=/home/hadoop/
+SCALA_HOME=$HADOOP_HOME/scala-2.9.3
+SPARK_HOME=$HADOOP_HOME/spark-0.7.2
+SPARK_ENV=$SPARK_HOME/conf/spark-env.sh
+SPARK_JOBS=$SPARK_HOME/jobs
 MASTER_HOST=$(grep -i "job.tracker<" /home/hadoop/conf/mapred-site.xml | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
 MASTER_PORT=7077
 MASTER=spark://$MASTER_HOST:$MASTER_PORT
 SPACE=$(mount | grep mnt | awk '{print $3"/spark/"}' | xargs | sed 's/ /,/g')
-JOBS_DIR=/home/hadoop/spark/jobs
+
+# Download and install Spark & Scala
+cd $HADOOP_HOME
+wget http://www.spark-project.org/download-spark-0.7.2-prebuilt-hadoop1
+wget http://www.scala-lang.org/downloads/distrib/files/scala-2.9.3.tgz
+tar -xvzf scala-2.9.3.tgz
+tar -xvzf download-spark-0.7.2-prebuilt-hadoop1
 
 # Build Spark environment
-cat >/home/hadoop/spark/conf/spark-env.sh <<EOL
+touch $SPARK_ENV
+cat >$SPARK_ENV <<EOL
 export SPARK_MASTER_IP=$MASTER
 export SCALA_HOME=$SCALA_HOME
 export SPARK_HOME=$SPARK_HOME
@@ -61,9 +64,9 @@ then
         # Run our job (if we have one)
         if [ ${#} -ge 1 ];then
                 jar_uri=${1}
-                cd $JOBS_DIR
+                cd $SPARK_JOBS
                 wget $jar_uri
-                job_path=$JOBS_DIR/$(basename $jar_uri)
+                job_path=$SPARK_JOBS/$(basename $jar_uri)
                 java -jar $job_path ${*:2}
         fi
 
