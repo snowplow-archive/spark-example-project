@@ -46,7 +46,7 @@ then
                 cd $JOBS_DIR
                 wget $job_uri
                 job_path=$JOBS_DIR/$(basename $job_uri)
-                java -jar $job_path $job_path "${*:2}" # Second job_path passed as first argument
+                java -jar $job_path $job_path ${*:2} # Second job_path passed as first argument
         fi
 
 else
