@@ -18,13 +18,22 @@ object WordCountJob {
         
     // Run the word count
     WordCount.execute(
-      master    = sys.env("MASTER"), // Set by Amazon's install-spark-shark.sh
-      args      = args,
+      master    = sys.env("MASTER"),
+      args      = allButFirst(args),
       sparkHome = Option(sys.env("SPARK_HOME")),
-      jars      = Option(sys.env("SPARK_EXAMPLE_JAR")).map(j => Seq(j)) // TODO: what will set this?
+      jars      = args.headOption.map(j => Seq(j))
     )
 
     // Exit with success
     System.exit(0)
+  }
+
+  def allButFirst(args: Array[String]) = {
+    val len = args.length - 1
+    if (len >= 1) {
+      args.takeRight(len)
+    } else {
+      null // Yech, really should switch this to an empty Scala List
+    }
   }
 }
