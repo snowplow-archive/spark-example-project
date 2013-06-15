@@ -50,6 +50,7 @@ Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-c
       --bootstrap-action s3://snowplow-hosted-assets/common/spark/install-spark-run-job-0.1.9.sh \
       --bootstrap-name "Spark Example Project" \
       --args "http://s3.amazonaws.com/{{JAR_BUCKET}}/spark-example-project-0.0.1.jar,s3n://{{IN_BUCKET}}/hello.txt,s3n://{{OUT_BUCKET}}/results"
+      --hadoop-version 1.0.3
 
 Replace `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths.
 

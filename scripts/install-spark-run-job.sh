@@ -69,7 +69,7 @@ then
                 # Load the environment
                 . $spark_env
                 # Run the job
-                java -cp "$SPARK_HOME/lib_managed/jars/*" -jar $jobs/$(basename $1) ${*:2}
+                java -cp $SPARK_HOME/lib_managed/jars/hadoop-core-1.0.3.jar -jar $jobs/$(basename $1) ${*:2}
         fi
 
 else
