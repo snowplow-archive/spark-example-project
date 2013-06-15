@@ -11,7 +11,7 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.9
+# Version:     0.1.11
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
@@ -29,8 +29,8 @@ SPACE=$(mount | grep mnt | awk '{print $3"/spark/"}' | xargs | sed 's/ /,/g')
 
 # Download and install Spark & Scala
 cd $HADOOP_HOME
-wget –quiet http://www.spark-project.org/download-spark-0.7.2-prebuilt-hadoop1
-wget –quiet http://www.scala-lang.org/downloads/distrib/files/scala-2.9.3.tgz
+wget –-quiet http://www.spark-project.org/download-spark-0.7.2-prebuilt-hadoop1
+wget –-quiet http://www.scala-lang.org/downloads/distrib/files/scala-2.9.3.tgz
 tar -xzf scala-2.9.3.tgz
 tar -xzf download-spark-0.7.2-prebuilt-hadoop1
 
@@ -48,7 +48,6 @@ EOL
 
 # Install config file and jars
 cp $HADOOP_HOME/conf/core-site.xml $SPARK_HOME/conf/
-cp $HADOOP_HOME/hadoop-core-1.0.3.jar $SPARK_HOME/lib_managed/jars/ 
 cp $HADOOP_HOME/lib/gson-* $SPARK_HOME/lib_managed/jars/
 cp $HADOOP_HOME/lib/aws-java-sdk-* $SPARK_HOME/lib_managed/jars/
 cp $HADOOP_HOME/lib/emr-metrics* $SPARK_HOME/lib_managed/jars/
@@ -65,11 +64,11 @@ then
                 # Download the job
                 jobs=$SPARK_HOME/jobs
                 mkdir $jobs && cd $_
-                wget –quiet $1
+                wget -–quiet $1
                 # Load the environment
                 . $spark_env
                 # Run the job
-                java -cp $SPARK_HOME/lib_managed/jars/hadoop-core-1.0.3.jar -jar $jobs/$(basename $1) ${*:2}
+                java -cp $SPARK_HOME/lib_managed/jars/hadoop-core-1.0.4.jar -jar $jobs/$(basename $1) ${*:2}
         fi
 
 else
