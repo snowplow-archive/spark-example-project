@@ -71,7 +71,7 @@ then
                 java -jar $jobs/$(basename $1) ${*:2}
         fi
 
-        exit 0 # Force success so we can look at the logs
+        exit 0 # Force success so we can keep --alive to look at logs. TODO remove when script works
 
 else
         nc -z $MASTER_HOST $MASTER_PORT
