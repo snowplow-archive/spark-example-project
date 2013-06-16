@@ -11,7 +11,7 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.12
+# Version:     0.1.15
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
@@ -22,7 +22,7 @@
 HADOOP_HOME=/home/hadoop
 SCALA_HOME=$HADOOP_HOME/scala-2.9.3
 SPARK_HOME=$HADOOP_HOME/spark-0.7.2
-MASTER_HOST=$(grep -i "job.tracker<" /home/hadoop/conf/mapred-site.xml | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
+MASTER_HOST=$(grep -i "job.tracker<" $HADOOP_HOME/conf/mapred-site.xml | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
 MASTER_PORT=7077
 MASTER=spark://$MASTER_HOST:$MASTER_PORT
 SPACE=$(mount | grep mnt | awk '{print $3"/spark/"}' | xargs | sed 's/ /,/g')
@@ -38,7 +38,6 @@ tar -xzf download-spark-0.7.2-prebuilt-hadoop1
 spark_env=$SPARK_HOME/conf/spark-env.sh
 touch $spark_env
 cat >$spark_env <<EOL
-export SPARK_MASTER_IP=$MASTER
 export SCALA_HOME=$SCALA_HOME
 export SPARK_HOME=$SPARK_HOME
 export MASTER=$MASTER
@@ -67,9 +66,12 @@ then
                 wget $1
                 # Load the environment
                 . $spark_env
+                export MASTER=spark://$(hostname):$MASTER_PORT # Not sure if we need to apply this to the workers too
                 # Run the job
                 java -jar $jobs/$(basename $1) ${*:2}
         fi
+
+        exit 0 # Force success so we can look at the logs
 
 else
         nc -z $MASTER_HOST $MASTER_PORT
