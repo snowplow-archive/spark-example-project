@@ -67,7 +67,6 @@ then
                 wget $1
                 # Load the environment
                 . $spark_env
-                export MASTER=spark://$(hostname):$MASTER_PORT # Not sure if we need to apply this to the workers too
                 # Run the job (will wait till there's at least one Worker available)
                 java -jar $jobs/$(basename $1) ${*:2}
         fi
