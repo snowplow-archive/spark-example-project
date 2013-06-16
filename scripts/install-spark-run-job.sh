@@ -11,7 +11,7 @@
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 #
-# Version:     0.1.15
+# Version:     0.1.16
 # URL:         https://github.com/snowplow/spark-example-project/blob/master/scripts/install-spark-run-job.sh
 #
 # Authors:     Alex Dean
@@ -22,7 +22,8 @@
 HADOOP_HOME=/home/hadoop
 SCALA_HOME=$HADOOP_HOME/scala-2.9.3
 SPARK_HOME=$HADOOP_HOME/spark-0.7.2
-MASTER_HOST=$(grep -i "job.tracker<" $HADOOP_HOME/conf/mapred-site.xml | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
+# MASTER_HOST=$(grep -i "job.tracker<" $HADOOP_HOME/conf/mapred-site.xml | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
+MASTER_HOST=$(hostname)
 MASTER_PORT=7077
 MASTER=spark://$MASTER_HOST:$MASTER_PORT
 SPACE=$(mount | grep mnt | awk '{print $3"/spark/"}' | xargs | sed 's/ /,/g')
@@ -51,7 +52,7 @@ cp $HADOOP_HOME/lib/gson-* $SPARK_HOME/lib_managed/jars/
 cp $HADOOP_HOME/lib/aws-java-sdk-* $SPARK_HOME/lib_managed/jars/
 cp $HADOOP_HOME/lib/emr-metrics* $SPARK_HOME/lib_managed/jars/
 
-# Start Spark master or Spark worker daemon
+# Start Spark Master or Spark Worker daemon
 grep -Fq '"isMaster":true' /mnt/var/lib/info/instance.json
 if [ $? -eq 0 ];
 then
@@ -67,7 +68,7 @@ then
                 # Load the environment
                 . $spark_env
                 export MASTER=spark://$(hostname):$MASTER_PORT # Not sure if we need to apply this to the workers too
-                # Run the job
+                # Run the job (will wait till there's at least one Worker available)
                 java -jar $jobs/$(basename $1) ${*:2}
         fi
 
@@ -81,5 +82,5 @@ else
                 nc -z  $MASTER_HOST $MASTER_PORT
         done
         echo "Connecting to the master was successful"
-        $SPARK_HOME/bin/spark-daemon.sh start spark.deploy.worker.Worker $MASTER
+        $SPARK_HOME/bin/start-slave.sh 1 $MASTER
 fi
