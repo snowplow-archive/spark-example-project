@@ -43,9 +43,7 @@ object BuildSettings {
         "commons-beanutils-1.7.0.jar",
         "servlet-api-2.5-6.1.14.jar",
         "servlet-api-2.5-20081211.jar",
-        "servlet-api-2.5.jar",
-        "hadoop-core-1.0.4.jar", // Provided by Amazon EMR. Delete this line if you're not on EMR
-        "hadoop-tools-1.0.4.jar" // "
+        "servlet-api-2.5.jar"
       ) 
       cp filter { jar => excludes(jar.data.getName) }
     },
