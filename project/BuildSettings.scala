@@ -41,7 +41,6 @@ object BuildSettings {
         "jasper-compiler-5.5.12.jar",
         "commons-beanutils-core-1.8.0.jar",
         "commons-beanutils-1.7.0.jar",
-        "servlet-api-2.5-6.1.14.jar",
         "servlet-api-2.5-20081211.jar",
         "servlet-api-2.5.jar"
       ) 
