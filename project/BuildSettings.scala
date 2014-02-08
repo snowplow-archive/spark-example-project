@@ -54,6 +54,7 @@ object BuildSettings {
         // case "project.clj" => MergeStrategy.discard // Leiningen build files
         case x if x.startsWith("META-INF") => MergeStrategy.discard // Bumf
         case x if x.endsWith(".html") => MergeStrategy.discard // More bumf
+        case PathList("com", "esotericsoftware", xs @ _*) => MergeStrategy.last // For Log$Logger.class
         case x => old(x)
       }
     }
