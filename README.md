@@ -91,7 +91,7 @@ Use the excellent [Elasticity] [elasticity] Ruby library to invoke/schedule your
 
 ## Copyright and license
 
-Copyright 2013 Snowplow Analytics Ltd.
+Copyright 2013-2014 Snowplow Analytics Ltd.
 
 Licensed under the [Apache License, Version 2.0] [license] (the "License");
 you may not use this software except in compliance with the License.
