@@ -49,14 +49,10 @@ else
 fi
 
 # Download jarfile from S3 to local
-mkdir ${user_jars}
-hadoop fs -get ${1} ${user_jars}/
 jarfile=${user_jars}/${1##*/}
-
-# Sanity check
 if [[ ! -f ${jarfile} ]]; then
-  echo "Downloaded jarfile ${jarfile} not found" >&2
-  exit 1
+  mkdir -p ${user_jars}
+  hadoop fs -get ${1} ${user_jars}/
 fi
 
 # Since our fatjar doesn't include spark-core (that dependency is "provided"),
