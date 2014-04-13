@@ -92,7 +92,7 @@ To invoke/schedule your Scalding job on EMR, check out:
 
 ## Roadmap
 
-Bump to Spark 0.9.x when this is supported by EMR.
+Bump to Spark 0.9.x when this is supported by EMR ([#1] [issue-1]).
 
 ## Further reading
 
@@ -120,6 +120,7 @@ limitations under the License.
 [scalding-example-project]: https://github.com/snowplow/scalding-example-project
 [cascalog-example-project]: https://github.com/snowplow/cascalog-example-project
 
+[issue-1]: https://github.com/snowplow/spark-example-project/issues/1
 [aws-spark-tutorial]: http://aws.amazon.com/articles/4926593393724923
 [spark-emr-howto]: https://forums.aws.amazon.com/thread.jspa?messageID=458398
 
