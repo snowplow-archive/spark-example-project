@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+# Script version 0.1.0
+
 # Die if anything happens
 set -e
 
