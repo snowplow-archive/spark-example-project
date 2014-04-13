@@ -31,7 +31,9 @@ object BuildSettings {
   lazy val sbtAssemblySettings = assemblySettings ++ Seq(
 
     // Slightly cleaner jar name
-    jarName in assembly <<= (name, version) { (name, version) => name + "-" + version + ".jar" },
+    jarName in assembly := {
+      name.value + "-" + version.value + ".jar"
+    },
     
     // Drop these jars
     excludedJars in assembly <<= (fullClasspath in assembly) map { cp =>
