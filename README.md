@@ -68,7 +68,6 @@ Once the output has completed, you should see a folder structure like this in yo
 
 Download the files and check that `part-00000` contains:
 
-    (goodbye,1)
     (hello,1)
     (world,2)
 
@@ -93,7 +92,7 @@ To invoke/schedule your Scalding job on EMR, check out:
 
 ## Roadmap
 
-* Update `install-spark-run-job.sh` to support private jarfiles (i.e. not only public files on S3)
+Bump to Spark 0.9.x when this is supported by EMR.
 
 ## Further reading
 
