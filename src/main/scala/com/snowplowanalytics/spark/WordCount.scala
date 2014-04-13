@@ -13,7 +13,7 @@
 package com.snowplowanalytics.spark
 
 // Spark
-import org.apache.spark.SparkContext
+import spark.SparkContext
 import SparkContext._
 
 object WordCount {
