@@ -83,7 +83,7 @@ If you have successfully run this on your own Spark cluster, we would welcome a 
 
 Fork this project and adapt it into your own custom Spark job.
 
-To invoke/schedule your Scalding job on EMR, check out:
+To invoke/schedule your Spark job on EMR, check out:
 
 * [Spark Plug] [spark-plug] for Scala
 * [Elasticity] [elasticity] for Ruby
