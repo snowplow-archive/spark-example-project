@@ -92,7 +92,8 @@ To invoke/schedule your Spark job on EMR, check out:
 
 ## Roadmap
 
-Bump to Spark 0.9.x when this is supported by EMR ([#1] [issue-1]).
+* Bump to Spark 0.9.x when this is supported by EMR ([#1] [issue-1]).
+* Change output from tuples to TSV ([#2] [issue-2])
 
 ## Further reading
 
@@ -121,6 +122,7 @@ limitations under the License.
 [cascalog-example-project]: https://github.com/snowplow/cascalog-example-project
 
 [issue-1]: https://github.com/snowplow/spark-example-project/issues/1
+[issue-2]: https://github.com/snowplow/spark-example-project/issues/2
 [aws-spark-tutorial]: http://aws.amazon.com/articles/4926593393724923
 [spark-emr-howto]: https://forums.aws.amazon.com/thread.jspa?messageID=458398
 
