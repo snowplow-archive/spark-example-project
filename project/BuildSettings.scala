@@ -18,9 +18,9 @@ object BuildSettings {
   // Basic settings for our app
   lazy val basicSettings = Seq[Setting[_]](
     organization  := "com.snowplowanalytics",
-    version       := "0.2.0",
+    version       := "0.3.0",
     description   := "Simple word count job for the Spark cluster computing platform, ready for Amazon EMR",
-    scalaVersion  := "2.9.3", // -> 2.10.0 when Spark is ready
+    scalaVersion  := "2.10.4",
     scalacOptions := Seq("-deprecation", "-encoding", "utf8"),
     resolvers     ++= Dependencies.resolutionRepos
   )
@@ -34,7 +34,7 @@ object BuildSettings {
     jarName in assembly := {
       name.value + "-" + version.value + ".jar"
     },
-    
+
     // Drop these jars
     excludedJars in assembly <<= (fullClasspath in assembly) map { cp =>
       val excludes = Set(
@@ -45,10 +45,10 @@ object BuildSettings {
         "commons-beanutils-1.7.0.jar",
         "servlet-api-2.5-20081211.jar",
         "servlet-api-2.5.jar"
-      ) 
+      )
       cp filter { jar => excludes(jar.data.getName) }
     },
-    
+
     mergeStrategy in assembly <<= (mergeStrategy in assembly) {
       (old) => {
         // case "project.clj" => MergeStrategy.discard // Leiningen build files
