@@ -18,7 +18,7 @@ Assuming you already have [SBT] [sbt] installed:
 
 The 'fat jar' is now available as:
 
-    target/spark-example-project-0.2.0.jar
+    target/spark-example-project-0.3.0.jar
 
 ## Unit testing
 
