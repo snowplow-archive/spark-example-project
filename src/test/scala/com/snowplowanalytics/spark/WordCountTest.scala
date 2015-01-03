@@ -12,7 +12,7 @@
  */
 
 
-/*
+
 package com.snowplowanalytics.spark
 
 // Java
@@ -51,5 +51,3 @@ class WordCountTest extends Specification {
     }
   }
 }
-
-*/
