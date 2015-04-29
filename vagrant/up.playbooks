@@ -1,0 +1,5 @@
+oss-playbooks/aws-cli-and-psql.yml
+oss-playbooks/java7.yml
+oss-playbooks/scala.yml
+oss-playbooks/sbt.yml
+oss-playbooks/invoke.yml

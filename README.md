@@ -4,17 +4,21 @@
 
 This is a simple word count job written in Scala for the [Spark] [spark] cluster computing platform, with instructions for running on [Amazon Elastic MapReduce] [emr] in non-interactive mode. The code is ported directly from Twitter's [`WordCountJob`] [wordcount] for Scalding.
 
-This was built by the Professional Services team at [Snowplow Analytics] [snowplow], who use Spark on their [Data pipelines and algorithms] [data-pipelines-algos] projects.
+This was built by the Data Science team at [Snowplow Analytics] [snowplow], who use Spark on their [Data pipelines and algorithms] [data-pipelines-algos] projects.
 
-_See also:_ [Scalding Example Project] [scalding-example-project] | [Cascalog Example Project] [cascalog-example-project]
+_See also:_ [Spark Streaming Example Project] [spark-streaming-example-project] | [Scalding Example Project] [scalding-example-project]
 
 ## Building
 
-Assuming you already have [SBT] [sbt] installed:
+Assuming git, [Vagrant] [vagrant-install] and [VirtualBox] [virtualbox-install] installed:
 
-    $ git clone git://github.com/snowplow/spark-example-project.git
-    $ cd spark-example-project
-    $ sbt assembly
+```bash
+ host> git clone https://github.com/snowplow/spark-example-project
+ host> cd spark-example-project
+ host> vagrant up && vagrant ssh
+guest> cd /vagrant
+guest> sbt assembly
+```
 
 The 'fat jar' is now available as:
 
@@ -118,15 +122,16 @@ limitations under the License.
 [snowplow]: http://snowplowanalytics.com
 [data-pipelines-algos]: http://snowplowanalytics.com/services/pipelines.html
 
+[vagrant-install]: http://docs.vagrantup.com/v2/installation/index.html
+[virtualbox-install]: https://www.virtualbox.org/wiki/Downloads
+
+[spark-streaming-example-project]: https://github.com/snowplow/spark-streaming-example-project
 [scalding-example-project]: https://github.com/snowplow/scalding-example-project
-[cascalog-example-project]: https://github.com/snowplow/cascalog-example-project
 
 [issue-1]: https://github.com/snowplow/spark-example-project/issues/1
 [issue-2]: https://github.com/snowplow/spark-example-project/issues/2
 [aws-spark-tutorial]: http://aws.amazon.com/articles/4926593393724923
 [spark-emr-howto]: https://forums.aws.amazon.com/thread.jspa?messageID=458398
-
-[sbt]: http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html
 
 [emr]: http://aws.amazon.com/elasticmapreduce/
 [hello-txt]: https://github.com/snowplow/spark-example-project/raw/master/data/hello.txt
