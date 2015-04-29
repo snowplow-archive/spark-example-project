@@ -28,7 +28,8 @@ object Dependencies {
 
   object Libraries {
     val sparkCore    = "org.apache.spark"           %% "spark-core"            % V.spark        % "provided"
-    val sparkMLlib   = "org.apache.spark"           %% "spark-mllib"           % V.spark        % "provided"
+    val sparkMllib   = "org.apache.spark"           %% "spark-mllib"           % V.spark        % "provided"
+    val sparkSql     = "org.apache.spark"           %% "spark-sql"             % V.spark        % "provided"
     // Add additional libraries from mvnrepository.com (SBT syntax) here...
 
     // Scala (test only)
