@@ -13,7 +13,10 @@
 package com.snowplowanalytics.spark
 
 // Spark
-import org.apache.spark.SparkContext
+import org.apache.spark.{
+  SparkContext,
+  SparkConf
+}
 import SparkContext._
 
 object WordCount {
@@ -21,9 +24,15 @@ object WordCount {
   private val AppName = "WordCountJob"
 
   // Run the word count. Agnostic to Spark's current mode of operation: can be run from tests as well as from main
-  def execute(master: String, args: List[String], jars: Seq[String] = Nil) {
+  def execute(master: Option[String], args: List[String], jars: Seq[String] = Nil) {
   
-    val sc = new SparkContext(master, AppName, null, jars) // null forces SparkContext to look up SPARK_HOME env var
+    val sc = {
+      val conf = new SparkConf().setAppName(AppName).setJars(jars)
+      for (m <- master) {
+        conf.setMaster(m)
+      }
+      new SparkContext(conf)
+    }
    
     // Adapted from Word Count example on http://spark-project.org/examples/
     val file = sc.textFile(args(0))

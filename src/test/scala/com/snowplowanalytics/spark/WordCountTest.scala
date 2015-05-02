@@ -10,6 +10,9 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
+
+
+
 package com.snowplowanalytics.spark
 
 // Java
@@ -38,7 +41,7 @@ class WordCountTest extends Specification {
       val outputDir = new File(tempDir, "output").getAbsolutePath
 
       WordCount.execute(
-        master = "local",
+        master = Some("local"),
         args   = List(inputFile, outputDir)
       )
 
