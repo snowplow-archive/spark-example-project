@@ -38,44 +38,42 @@ The `assembly` command above runs the test suite - but you can also run this man
 
 ### Prepare
 
-Assuming you have already assembled the jarfile (see above), now upload the jar to an Amazon S3 bucket and make the file publically accessible.
+Create:
 
-Next, upload the data file [`data/hello.txt`] [hello-txt] to S3.
+1. An AWS CLI profile, e.g. _spark_
+2. An Amazon S3 bucket, e.g. _spark-example-project-your-name_
+3. A EC2 keypair, e.g. _spark-ec2-keypair_
+4. A VPC public subnet, e.g. _subnet-3dc2bd2a_
 
-### Run
+Make sure you have assembled the jarfile (see above).
 
-Finally, you are ready to run this job using the [Amazon Ruby EMR client] [emr-client]:
+### Upload and run
 
-```
-$ elastic-mapreduce --create --name "Spark Example Project" --instance-type m1.xlarge --instance-count 3 \
-  --bootstrap-action s3://elasticmapreduce/samples/spark/0.8.1/install-spark-shark.sh --bootstrap-name "Install Spark/Shark" \
-  --jar s3://elasticmapreduce/libs/script-runner/script-runner.jar --step-name "Run Spark Example Project" \
-  --step-action TERMINATE_JOB_FLOW \
-  --arg s3://snowplow-hosted-assets/common/spark/run-spark-job-0.1.0.sh \
-  --arg s3://{{JAR_BUCKET}}/spark-example-project-0.2.0.jar \
-  --arg com.snowplowanalytics.spark.WordCountJob \
-  --arg s3n://{{IN_BUCKET}}/hello.txt \
-  --arg s3n://{{OUT_BUCKET}}/results
+```bash
+guest> inv upload spark spark-example-project-your-name
+guest> inv run_emr spark spark-example-project-your-name spark-ec2-keypair subnet-3dc2bd2a
 ```
 
-Replace `{{JAR_BUCKET}}`, `{{IN_BUCKET}}` and `{{OUT_BUCKET}}` with the appropriate paths.
+You can now monitor the running EMR jobflow in the AWS Elastic MapReduce UI.
 
 ### Inspect
 
-Once the output has completed, you should see a folder structure like this in your output bucket:
+Once the job has completed, you should see a folder structure like this in your output bucket:
 
      results
      |
      +- _SUCCESS
      +- part-00000
      +- part-00001
+     +- part-00002
+     +- part-...
 
-Download the files and check that `part-00000` contains:
+Download the files and check that one file contains:
 
     (hello,1)
     (world,2)
 
-while `part-00001` contains:
+while another file contains:
 
     (goodbye,1)
 
@@ -96,17 +94,11 @@ To invoke/schedule your Spark job on EMR, check out:
 
 ## Roadmap
 
-* Bump to Spark 0.9.x when this is supported by EMR ([#1] [issue-1]).
 * Change output from tuples to TSV ([#2] [issue-2])
-
-## Further reading
-
-* [Run Spark and Shark on Amazon Elastic MapReduce] [aws-spark-tutorial]
-* [Running Spark job on EMR as a jar in non-interactive mode] [spark-emr-howto]
 
 ## Copyright and license
 
-Copyright 2013-2014 Snowplow Analytics Ltd.
+Copyright 2013-2015 Snowplow Analytics Ltd.
 
 Licensed under the [Apache License, Version 2.0] [license] (the "License");
 you may not use this software except in compliance with the License.
