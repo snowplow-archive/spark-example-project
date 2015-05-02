@@ -1,0 +1,18 @@
+Version 0.3.0 (2015-05-02)
+--------------------------
+Bumped to Spark 1.3.0 (#1)
+Bumped Scala to 2.10.4 (#5)
+Removed run-spark-job.sh (#11)
+Removed dependency on MASTER environment property (#12)
+Added Spark SQL to dependencies (#10)
+Added dedicated Vagrant setup (#6)
+Added invoke tasks using Boto (#13)
+Added CHANGELOG (#7)
+
+Version 0.2.0 (2014-04-18)
+--------------------------
+Issues TBC
+
+Version 0.1.0 (2014-02-08)
+--------------------------
+Initial release
