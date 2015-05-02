@@ -41,7 +41,7 @@ class WordCountTest extends Specification {
       val outputDir = new File(tempDir, "output").getAbsolutePath
 
       WordCount.execute(
-        master = "local",
+        master = Some("local"),
         args   = List(inputFile, outputDir)
       )
 
