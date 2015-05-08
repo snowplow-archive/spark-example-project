@@ -22,7 +22,7 @@ guest> sbt assembly
 
 The 'fat jar' is now available as:
 
-    target/spark-example-project-0.3.0.jar
+    target/scala-2.10/spark-example-project-0.3.0.jar
 
 ## Unit testing
 
