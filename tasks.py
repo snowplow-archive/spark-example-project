@@ -20,7 +20,7 @@ from boto.emr.step import InstallHiveStep, ScriptRunnerStep
 from boto.emr.bootstrap_action import BootstrapAction
 
 HELLO_TXT = "in/hello.txt"
-JAR_FILE  = "spark-example-project-0.3.0.jar"
+JAR_FILE  = "spark-example-project-0.4.0.jar"
 
 S3_REGIONS = { 'us-east-1': Location.DEFAULT,
                  'us-west-1': Location.USWest,
