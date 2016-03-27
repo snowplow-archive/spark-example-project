@@ -1,4 +1,5 @@
 oss-playbooks/aws-cli-and-psql.yml
+oss-playbooks/boto3.yml
 oss-playbooks/java7.yml
 oss-playbooks/scala.yml
 oss-playbooks/sbt.yml
