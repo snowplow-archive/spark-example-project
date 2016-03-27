@@ -111,7 +111,7 @@ def run_emr(profile, bucket, ec2_keyname, vpc_subnet_id):
     conn = boto.emr.connect_to_region(r, profile_name=profile)
     job_id = conn.run_jobflow(
         name="Spark Example Project",
-        log_uri="s3://" + bucket + "logs",
+        log_uri="s3://" + bucket + "/logs",
         ec2_keyname=ec2_keyname,
         master_instance_type="m3.xlarge",
         slave_instance_type="m3.xlarge",
