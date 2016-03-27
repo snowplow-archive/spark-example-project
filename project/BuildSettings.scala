@@ -20,7 +20,7 @@ object BuildSettings {
     organization  := "com.snowplowanalytics",
     version       := "0.4.0",
     description   := "Simple word count job for the Spark cluster computing platform, ready for Amazon EMR",
-    scalaVersion  := "2.10.4",
+    scalaVersion  := "2.10.5",
     scalacOptions := Seq("-deprecation", "-encoding", "utf8"),
     resolvers     ++= Dependencies.resolutionRepos
   )
