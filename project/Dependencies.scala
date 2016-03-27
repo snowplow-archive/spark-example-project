@@ -20,8 +20,8 @@ object Dependencies {
   )
 
   object V {
-    val spark     = "1.3.0"
-    val specs2    = "1.13" // -> "1.13" when we bump to Scala 2.10.0
+    val spark     = "1.6.0"
+    val specs2    = "1.13"
     val guava     = "11.0.1"
     // Add versions for your additional libraries here...
   }
@@ -33,7 +33,8 @@ object Dependencies {
     // Add additional libraries from mvnrepository.com (SBT syntax) here...
 
     // Scala (test only)
-    val specs2       = "org.specs2"                 % "specs2_2.10"           % V.specs2       % "test"
-    val guava        = "com.google.guava"           % "guava"                 % V.guava        % "test"
+    val specs2       = "org.specs2"                 %% "specs2"                % V.specs2       % "test"
+    // Java (test only)
+    val guava        = "com.google.guava"           %  "guava"                 % V.guava        % "test"
   }
 }

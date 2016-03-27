@@ -31,8 +31,8 @@ object SparkExampleProjectBuild extends Build {
         Libraries.sparkCore,
         Libraries.sparkMllib,
         Libraries.sparkSql,
-        Libraries.guava,
-        Libraries.specs2
+        Libraries.specs2,
+        Libraries.guava
         // Add your additional libraries here (comma-separated)...
       )
     )
