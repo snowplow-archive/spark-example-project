@@ -1,3 +1,13 @@
+Version 0.4.0 (2016-03-28)
+--------------------------
+Bump to 0.4.0 (#21)
+Update tasks.py to work with AMI 4.x.x (#20)
+Add Boto3 to Vagrant (#23)
+Upgrade to use Spark 1.6.0 (#19)
+Bump Scala to 2.10.5 (#22)
+Remove openjdk from test suite (#24)
+Add missing / before logs for log URI in invoke (#16)
+
 Version 0.3.0 (2015-05-02)
 --------------------------
 Bumped to Spark 1.3.0 (#1)
